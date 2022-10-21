@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Expansesform.css";
 
-const Expansesform = () => {
+const Expansesform = (props) => {
     const[enteredTitle, setEnteredTitle] = useState('');
     const[enteredPrice, setEnteredPrice] = useState('');
     const[enteredDate, setEnteredDate] = useState('');
@@ -52,6 +52,7 @@ const Expansesform = () => {
         price: enteredPrice,
         date: new Date(enteredDate)
     };
+        props.onSaveExpenseData(expenseData);
         setEnteredTitle('');
         setEnteredPrice('');
         setEnteredDate('')
@@ -59,21 +60,21 @@ const Expansesform = () => {
     return ( 
     <>
     <form onSubmit={submitHandler}>
-        <div className="new-expense__controls">
-            <div className="new-expense__control">
+        <div className="d-lg-flex align-items-center justify-content-center new-expense__controls">
+            <div className="col-lg-5 px-0 new-expense__control">
                 <label htmlFor="title">Title</label>
                 <input type="text" value={enteredTitle} onChange={titleChangeHandler} name="title" id="title" />
             </div>
-            <div className="new-expense__control">
+            <div className="col-lg-5 px-0 new-expense__control">
                 <label htmlFor="price">Price</label>
                 <input type="number" value={enteredPrice} onChange={priceChangeHandler} min="0.01" step="0.01" />
             </div>
-            <div className="new-expense__control">
+            <div className="col-lg-5 px-0 new-expense__control">
                 <label htmlFor="date">Date</label>
                 <input type="date" value={enteredDate} onChange={dateChangeHandler} min="2019-01-01" max="2022-12-31" />
             </div>
-            <div className="new-expense__actions">
-                <button type="Submit">Add Expenses</button>
+            <div className="col-lg-5 px-0 d-lg-flex align-items-end justify-content-end new-expense__actions">
+                <button type="Submit" className="me-0">Add Expenses</button>
             </div>
         </div>
     </form>
