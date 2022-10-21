@@ -1,5 +1,4 @@
 import React from "react";
-import ExpenseDate from "../Expenses/ExpenseDate";
 import Expansesform from "./Expansesform";
 import "./Newexpanses.css";
 
