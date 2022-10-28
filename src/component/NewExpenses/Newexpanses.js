@@ -1,22 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
 import Expansesform from "./Expansesform";
 import "./Newexpanses.css";
 
-const Newexpanses = (props) => {
-    const saveExpenseDataHandler  = (enteredExpenseData) => {
-        const expenseData = {
-            ...enteredExpenseData,
-            id: Math.random().toString()
-        };
-        props.onAddExpenseData(expenseData);
-    }
 
-    return ( 
-    <>
-        <div className="new-expense">
-            <Expansesform onSaveExpenseData={saveExpenseDataHandler}/>
-        </div>
-    </>
+const Newexpenses = (props) => {
+    const [isEditing, setIsEditing] = useState(false);
+  
+    const saveExpenseDataHandler = (enteredExpenseData) => {
+      const expenseData = {
+        ...enteredExpenseData,
+        id: Math.random().toString(),
+      };
+      props.onAddExpense(expenseData);
+      setIsEditing(false);
+    };
+  
+    const startEditingHandler = () => {
+      setIsEditing(true);
+    };
+  
+    const stopEditingHandler = () => {
+      setIsEditing(false);
+    };
+  
+    return (
+      <div className='new-expense'>
+        {!isEditing && (
+          <button onClick={startEditingHandler}>Add New Expense</button>
+        )}
+        {isEditing && (
+          <Expansesform
+            onSaveExpenseData={saveExpenseDataHandler}
+            onCancel={stopEditingHandler}
+          />
+        )}
+      </div>
     );
-}
-export default Newexpanses;
+  };
+  
+  export default Newexpenses;
