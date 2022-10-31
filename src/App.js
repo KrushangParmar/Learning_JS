@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Newexpenses from './component/NewExpenses/Newexpanses';
 import Expenses from "./component/Expenses/Expenses";
+import CourseGoalItem from "./CourseGoals/CourseGoalItem/CourseGoalItem";
+import CourseGoalApp from "./CourseGoalApp";
 
 const Dummy_expenses = [
     { id: 'e_id01', title: 'Car Insurance', price: 267.33, date: new Date(2021, 2, 27) },
@@ -22,10 +24,14 @@ function App() {
         // React.createElement(Newexpenses, {onAddExpense: addExpenseHandler}),
         //     React.createElement(Expenses, { items: expenses })
         // )
-        <div>
-      <Newexpenses onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
-    </div>
+        //     <div>
+        //   <Newexpenses onAddExpense={addExpenseHandler} />
+        //   <Expenses items={expenses} />
+        // </div>
+        // CourseGoalApp
+            <div>
+              <CourseGoalApp/>
+            </div>
     )
 }
 export default App;
