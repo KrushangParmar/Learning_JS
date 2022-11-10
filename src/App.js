@@ -3,6 +3,11 @@ import Newexpenses from './component/NewExpenses/Newexpanses';
 import Expenses from "./component/Expenses/Expenses";
 import CourseGoalItem from "./CourseGoals/CourseGoalItem/CourseGoalItem";
 import CourseGoalApp from "./CourseGoalApp";
+import GetpostApi from "./component/Axios_API/GetpostApi";
+import { getCountries } from "./component/Exportfile/apiData";
+import { useEffect } from "react";
+import Card from "./component/UI/Card";
+import Addbanner from "./component/Adbanner";
 
 const Dummy_expenses = [
     { id: 'e_id01', title: 'Car Insurance', price: 267.33, date: new Date(2021, 2, 27) },
@@ -30,7 +35,7 @@ function App() {
         // </div>
         // CourseGoalApp
             <div>
-              <CourseGoalApp/>
+              <Addbanner/>         
             </div>
     )
 }
