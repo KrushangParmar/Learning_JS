@@ -8,6 +8,8 @@ import { getCountries } from "./component/Exportfile/apiData";
 import { useEffect } from "react";
 import Card from "./component/UI/Card";
 import Addbanner from "./component/Adbanner";
+import AddUser from "./component/User_component/AddUser";
+import UsersList from "./component/User_component/UsersList";
 
 const Dummy_expenses = [
     { id: 'e_id01', title: 'Car Insurance', price: 267.33, date: new Date(2021, 2, 27) },
@@ -18,11 +20,18 @@ const Dummy_expenses = [
 
 function App() {
     const[expenses, setExpenses]=useState(Dummy_expenses);
+    const[usersList, setUsersList]=useState([]);
     const addExpenseHandler = (expense) => {
         setExpenses((prevExpenses) => {
           return [expense, ...prevExpenses];
         });
       };
+
+      const addUserhandler = (uName, uAge) =>{
+        setUsersList((prevUsersList) => {
+          return [...prevUsersList, {name: uName, age: uAge, id: Math.random().toString()}];
+        })
+      }
     return (
         // React.createElement('div', {},
         // React.createElement('h2', {}, 'Let\'s Start'),
@@ -35,7 +44,8 @@ function App() {
         // </div>
         // CourseGoalApp
             <div>
-              <Addbanner/>         
+              <AddUser onAddUser={addUserhandler}/>
+              <UsersList users={usersList}/>         
             </div>
     )
 }

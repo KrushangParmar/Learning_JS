@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Button from '../../component/Button/Button';
+import Button from '../../component/UI/Button';
 import './CourseInput.css';
 
 const CourseInput = props => {
